@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
+const rawBaseUrl = import.meta.env.VITE_API_URL || 'https://fypbackend-y43f.onrender.com';
+const cleanBaseUrl = rawBaseUrl.endsWith('/') ? rawBaseUrl.slice(0, -1) : rawBaseUrl;
+
 // Create a robust Axios instance
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://compalint-portal.onrender.com/',
+  baseURL: cleanBaseUrl,
   timeout: 45000, // 45 seconds max wait time for DB connections
   headers: {
     'Content-Type': 'application/json',
